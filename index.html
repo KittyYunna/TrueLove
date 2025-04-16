@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Amor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff0f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: #c0392b;
+      margin-top: 40px;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      margin: 20px;
+      color: #333;
+    }
+
+    .counter {
+      font-size: 2rem;
+      margin: 20px;
+      color: #e74c3c;
+    }
+
+    .image-container {
+      margin: 20px;
+    }
+
+    .image-container img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .heart {
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -7.5px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .message, .counter {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Feliz 1 ano de nós!</h1>
+  <div class="message">
+    <p>Um ano se passou desde o começo da nossa história... e cada dia ao seu lado tem sido mágico. Te amo mais a cada segundo ❤️</p>
+  </div>
+
+  <div class="counter" id="daysCounter"></div>
+
+  <div class="image-container">
+    <img src="coloque-sua-imagem-aqui.jpg" alt="Nossa foto">
+  </div>
+
+  <script>
+    // Contador de dias desde 21 de abril de 2024
+    const startDate = new Date('2024-04-21');
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById('daysCounter').textContent = `Estamos juntos há ${diffDays} dias!`;
+
+    // Criar corações caindo
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
